@@ -15,12 +15,13 @@ public class WebCamera : MonoBehaviour
         webcamtex.Play();
     }
 
-    public void SnapShot() {
+    public byte[] SnapShot() {
         Debug.Log("SnapShot!!");
         Color32[] color32 = webcamtex.GetPixels32();
         Texture2D texture = new Texture2D(webcamtex.width, webcamtex.height);
         GameObject.Find("WebCamQuad").GetComponent<Renderer>().material.mainTexture = texture;
         texture.SetPixels32(color32);
         texture.Apply();
+        return texture.EncodeToPNG();
     }
 }

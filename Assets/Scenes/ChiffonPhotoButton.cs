@@ -8,6 +8,7 @@ public class ChiffonPhotoButton : MonoBehaviour
     public void OnClick()
     {
         Debug.Log("OnClick!!");
-        GameObject.Find("WebCamQuad").GetComponent<WebCamera>().SnapShot();
+        var png = GameObject.Find("WebCamQuad").GetComponent<WebCamera>().SnapShot();
+        GameObject.Find("ConnectButton").GetComponent<SocketClient>().Upload(png);
     }
 }
