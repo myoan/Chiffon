@@ -11,6 +11,7 @@ public class WebCamera : MonoBehaviour
     void Start () {
         WebCamDevice[] devices = WebCamTexture.devices;
         webcamtex = new WebCamTexture(devices[0].name, 1024, 1024, 30);
+        // webcamtex = new WebCamTexture(devices[1].name, 1024, 1024, 30);
         GetComponent<Renderer> ().material.mainTexture = webcamtex;
         webcamtex.Play();
     }
@@ -23,5 +24,10 @@ public class WebCamera : MonoBehaviour
         texture.SetPixels32(color32);
         texture.Apply();
         return texture.EncodeToPNG();
+    }
+
+    public void Play() {
+        GetComponent<Renderer> ().material.mainTexture = webcamtex;
+        webcamtex.Play();
     }
 }
